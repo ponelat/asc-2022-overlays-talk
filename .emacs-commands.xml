@@ -1,0 +1,10 @@
+<emacs>
+  <command title="Watch" dir="." >
+
+    <cmd>
+      nix-shell -p --run "npx --yes @marp-team/marp-cli@latest -s ."
+    </cmd>
+
+  </command>
+
+</emacs>
