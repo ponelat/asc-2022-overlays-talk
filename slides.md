@@ -12,6 +12,16 @@ backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 Different people have different needs.
 Overlays use layers to enrich API Definitions.
 
+**TODOs**
+
+- [ ] Slides ready for Adam A
+- [ ] Changes for "where" claus.
+- [ ] Test out private/public with Overlays 
+- [ ] Create examples of different things to overlay (get feedback?)
+- [ ] Measure size of concerns (shape vs documentation vs annotations in kilobytes)
+- [ ] And a mechansim for multiple inputs (combine files together)
+
+
 <!-- How Overlays enrich OpenAPI definitions. -->
 <!-- Allowing different stakeholders to own separate documents. -->
 
@@ -23,13 +33,81 @@ Overlays use layers to enrich API Definitions.
 
 # What are we going to cover?
 - Overlays are a thing to help separate OpenAPI (and other) documents into several smaller ones, separate concerns.
-- I'm going to show you the motivation behind them
 - How they work
+- I'm going to show you the motivation behind them
 - Where we are today with the standard and how you can help
 
 ---
 
-# Let's look at a defintion
+# Outcomes
+- Fun / Inspiring
+- Know what Overlays are
+- Use-cases for Overlays
+- How to use it
+- Why another standard
+- Where it is today
+
+---
+
+# Journey 0
+- It's a YAML file. Query + Action
+- Use-cases for Overlays. Documentation + Gateways + No access
+- Why another standard
+- Where it is today
+- How to get involved
+
+---
+
+# Traits
+- Common parameters
+- Common headers
+- Common responses (errors)
+  - Expansions, similar to macros
+  
+```yaml
+/foo:
+  get:
+    x-traits: 
+	- pagination
+
+```
+
+---
+
+# Invalid documents
+
+Overlays could be abused and form a type of templating language.
+Where you use things like `x-traits: [pagination]` and the overlay will replace that with parameters/schemas/etc.
+The problem is that you've now split your definition too far, in that it is invalid without the overlay.
+Bad.
+
+---
+
+# Combining two(+) definitions together
+
+Splitting APIs by their role. Good for gateways or super large API definitionns.
+Also useful for one API definition with several "versions" in it.
+
+
+---
+
+# Journey 
+- Warm up
+- State your problem
+	- Manage access to the API Definition. Let everyone create their own changes
+- Use-cases for Overlays. Documentation + Gateways + No access
+- Why another standard
+- Where it is today and how to get involved
+---
+
+# OpenAPI et all are victims of success
+
+- Now that we have a central place to put thing related to an API, we do so and we abuse it!
+- Overlays can help alleviate that.
+
+---
+
+# What can be layered?
 
 - Location of the server
 - Security details
@@ -42,13 +120,45 @@ Overlays use layers to enrich API Definitions.
 
 ---
 
-# Types of big
+# Documentation writer
 
-There are two types of big in my vocab. There is big as in size, lots and lots of API surface area. Then there is big as in complexity. K8s is big in size and we can look at how Overlays tackle size in a little bit, but I'm more interested today in complexity.
+Let's call her Ellen.
+![](./persona.png)
+
+She doesn't have access to the OpenAPI hosted on GitHub.
+But she needs to be able to add a human touch to the documentation. 
 
 ---
 
-# Splitting things up
+# DevOps engineer
+
+Let's call him Nathan.
+![](./persona3.png)
+
+He needs to annotate several API definitions with Gateway annotations. But he's uninterested in any other specifics of the APIs.
+
+---
+
+
+# Product Manager
+
+Let's call them Jim.
+![](./persona2.png)
+
+They are interested in exposing API definitions publicly and only wants to show those parts that add value to customers and that she wants to support.
+
+---
+
+# Types of big
+
+There are two types of big in my vocab.
+
+There is big as in size, lots and lots of API surface area.
+Then there is big as in complexity. K8s is big in size and we can look at how Overlays tackle size in a little bit, but I'm more interested today in complexity.
+
+---
+
+# Making Layers
 
 I'm interested in splitting out things so that different stakeholders can focus on their parts to play. Let's see how to do this.
 
@@ -80,21 +190,33 @@ With a query language we're also able to add blanket defaults to any current or 
 ## Overlay documents
 
 ```yaml
-overlay: 1.0.0
+overlays: 1.0.0
 extends: http://example.com/openapi.yml
 actions:
-- target: $.paths.*.*
+- target: $.paths.*.*.x-internal
   remove: true
 ```
 
 --- 
-How do Overlays accomplish this?
-The goal is to target some elements of a source document, and transform those. 
 
-SLIDE: Query + Transformation of some sort.
+# How do Overlays work?
 
+- The goal is to target some elements of a source document, and transform those. 
+- SLIDE: Query + Transformation of some sort.
 
 SLIDE: Here is an example Overlay document, with us adding a 403 response code for every operation that has a token security. 
+
+```yaml
+overlays: 1.0.0
+extends: http://example.com/openapi.yml
+actions:
+- target: $.paths.*.*.[?(@.security)]
+  update: 
+    responses:
+	  403:
+	    description: Must have 403
+  
+```
 
 SLIDE: Here is a document overriding the description and summary of a specific operation. 
 
@@ -125,15 +247,9 @@ TODO: MOre justificatoin
 
 ---
 
-# OpenAPI et all are victims of success
-
-- Now that we have a central place to put thing related to an API, we do so and we abuse it!
-- Overlays can help alleviate that.
-
----
 # How to start using Overlays
 
-Swagger doctor, split
+Swagger doctor, split, underlay
 
 ---
 
