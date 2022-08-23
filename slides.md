@@ -15,7 +15,8 @@ Overlays use layers to enrich API Definitions.
 **TODOs**
 
 - [ ] Slides ready for Adam A
-- [ ] Changes for "where" claus.
+- [x] Changes for "where" claus.
+- [ ] Ask JSONPath folks about nested selectors/filters.
 - [ ] Test out private/public with Overlays 
 - [ ] Create examples of different things to overlay (get feedback?)
 - [ ] Measure size of concerns (shape vs documentation vs annotations in kilobytes)
@@ -39,6 +40,20 @@ Overlays use layers to enrich API Definitions.
 
 ---
 
+# Value and tempo of talk
+
+- I've been racking my brain around this talk.
+- Overlays aren't perfect 
+- I'm going to show you the facts, then I'm going to convince you of the potential.
+
+---
+
+# API specifications aren't indidivual concerns
+
+- They have become team efforts with several different stakeholders 
+
+---
+
 # Outcomes
 - Fun / Inspiring
 - Know what Overlays are
@@ -58,7 +73,33 @@ Overlays use layers to enrich API Definitions.
 
 ---
 
-# Traits
+# Canonical OpenAPI
+
+How much should tool vendors build support for?
+Talking about a canonical and composeable definitions.
+> Think of a linker and a compiler
+
+---
+
+# What can you do today?
+
+- Weigh in on canonical version of the definition 
+- Write an Overlay, play with it.
+- Add a use-case, get it solved.
+
+
+---
+
+# Who is going to support this?
+
+TBD
+- Swagger
+- Postman
+- OpenAPI
+
+---
+
+# Traits and dangers
 - Common parameters
 - Common headers
 - Common responses (errors)
@@ -88,6 +129,7 @@ Bad.
 Splitting APIs by their role. Good for gateways or super large API definitionns.
 Also useful for one API definition with several "versions" in it.
 
+We have Overlays that mutate one thing at at time. Help us get composition documents.
 
 ---
 
@@ -128,6 +170,9 @@ Let's call her Ellen.
 She doesn't have access to the OpenAPI hosted on GitHub.
 But she needs to be able to add a human touch to the documentation. 
 
+EG: API with images in description: https://app.swaggerhub.com/apis/Jatelindo-Perkasa/optima-s/1.0.0#/
+Eg: API with heavy descriptions and x-aws flags: https://app.swaggerhub.com/apis/kandeshvari/amazon-elastic_compute_cloud/2016-11-15#/default/GET%20DescribeVolumes
+
 ---
 
 # DevOps engineer
@@ -148,6 +193,8 @@ Let's call them Jim.
 They are interested in exposing API definitions publicly and only wants to show those parts that add value to customers and that she wants to support.
 
 ---
+
+
 
 # Types of big
 
@@ -174,8 +221,22 @@ We have the operations, in them we have some metadata, like this has AWS gateway
 
 ---
 
+# Instances of OpenAPI
+
+Adding a server to an API definition, with lifecycle state.
+
+---
+
 # Let's put these into separate files.
 ![](https://via.placeholder.com/400x200?text=Separate+Files)
+
+---
+
+# Splitting up documents
+
+- What can be done today: $refs. 
+- Splitting by JSONPath (description,summary)
+- Splitting up the API into sections (by tags for example)
 
 ---
 
@@ -262,6 +323,7 @@ Swagger doctor, split, underlay
 
 # Where we want to be. 
 - Incorporated into popular tool vendors, so that folks can use it to describe their Definitions with abandon
+- Dynamic
 
 
 ---
@@ -287,11 +349,26 @@ Create persona cards for them. Show their interactions. Specifically the documen
 
 # File size comparison
 
+Petstore3
+- Ori: 16k
+- Base without docs: 12.3k
+
+k8s
+- base 4,355k
+- base without docs: 3,255k
+
 - 2mb for k8s
 - 1mb API shape
 - 500k documentation
 - 1k security
 - 50k annotations
+
+---
+
+# SPlit files by tags
+
+Move operations based on tags into their own files.
+$ref back to the original file for the schemas/components.
 
 ---
 
