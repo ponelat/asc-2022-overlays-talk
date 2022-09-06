@@ -5,8 +5,8 @@ const { hideBin } = require('yargs/helpers')
 const cloneDeep = require('lodash/cloneDeep')
 const traverse = require('traverse')
 const {applyOverlay} = require('overlays-cli')
-
 const resolver = require('./resolver.js')
+const json2csv = require('json2csv')
 
 run().then(console.log, (err) => {
     console.error(err)
@@ -18,7 +18,7 @@ function argsToOpts(args) {
 	.options({
 	    file: {
 		alias: 'f',
-		type: 'string',
+		type: 'array',
                 required: true,
 		description: '(URL/File): File to generate report on'
 	    }}).parse()
@@ -26,27 +26,34 @@ function argsToOpts(args) {
 
 async function cliParse(args) {
     const opts = argsToOpts(args)
-    const {file: fileName} = opts  
-    const fileObj = await resolver(fileName)
-    return {fileObj, fileName}
+    const {file: fileNames} = opts  
+    const files = await Promise.all(fileNames.map(async (name) => {
+        return {
+            name,
+            obj: await resolver(name)
+        }
+    }))
+    return { files }
 }
 
 async function run() {
-    const {fileObj, fileName} = await cliParse(process.argv)
-    const withoutDocs = await stripDocs(fileObj)
-    const withoutVendor = await stripVendor(fileObj)
-    const fullSize = size(fileObj)
-    const docSize = fullSize - size(withoutDocs)
-    const vendorSize = fullSize - size(withoutVendor)
-
-    return JSON.stringify({
-        name: fileName,
-        sizes: {
-            full: fullSize,
-            docs: docSize,
-            vendor: vendorSize,
+    const {files} = await cliParse(process.argv)
+    let sizes = files.map(async ({obj, name}) => {
+	const withoutDocs = await stripDocs(obj)
+	const withoutVendor = await stripVendor(obj)
+	const fullSize = size(obj)
+	const docSize = fullSize - size(withoutDocs)
+	const vendorSize = fullSize - size(withoutVendor)
+        return {
+            name,
+            date: new Date(),
+            fullSize,
+            docSize,
+            vendorSize
         }
-    }, null, 2)
+    })
+    sizes = await Promise.all(sizes) 
+    return json2csv.parse(sizes)
 }
 
 async function stripDocs(obj) {
