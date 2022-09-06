@@ -1,0 +1,19 @@
+{
+  "name": "reports",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "overlays-cli": "^0.8.0",
+    "traverse": "^0.6.6",
+    "yargs": "^17.5.1"
+  }
+}
