@@ -215,13 +215,11 @@ update: Pet
 
 # Sizes of API features
 
-- Original size: 4mb
-- Without descriptions: 3mb
-- Without vendor extensions: ??
+
+![](./bar-chart.png)
 
 TODO: Bar chart of savings
-TODO: Calculate for k8s,petstore and one other.
-full, documentation (incl examples), vendor extensions
+TODO: Calculate for k8s,strip and petstore.
 TODO: Run it over the 4gb corpus?
 
 ---
@@ -353,6 +351,7 @@ Start with "No, I don't need Overlays.". Then ponder the following.
 
 - Redocly-CLI
 - JSONette
+- Geneva https://github.com/smizell/geneva
 
 ---
 
