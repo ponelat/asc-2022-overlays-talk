@@ -36,6 +36,15 @@ async function cliParse(args) {
     return { files }
 }
 
+function getSpecificationType(obj) {
+    let openapi = obj?.openapi
+    let swagger = obj?.swagger
+    let asyncapi = obj?.asyncapi
+    if(openapi) return `openapi-${openapi}`
+    if(swagger) return `swagger-${swagger}`
+    if(asyncapi) return `asyncapi-${asyncapi}`
+    return 'unknown'
+}
 async function run() {
     const {files} = await cliParse(process.argv)
     let sizes = files.map(async ({obj, name}) => {
@@ -44,8 +53,12 @@ async function run() {
 	const fullSize = size(obj)
 	const docSize = fullSize - size(withoutDocs)
 	const vendorSize = fullSize - size(withoutVendor)
+        const specification = getSpecificationType(obj)
+        const title = obj?.info?.title || ''
         return {
             name,
+            specification,
+            title,
             date: new Date(),
             fullSize,
             docSize,

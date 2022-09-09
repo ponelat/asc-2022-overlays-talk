@@ -3,7 +3,7 @@ const fs = require('fs')
 const jsYaml = require('js-yaml')
 
 module.exports = async function externalResolver(url) {
-    if(url.startsWith('.')) {
+    if(!url.startsWith('http:') && !url.startsWith('https:') ) {
 	return jsYaml.load(fs.readFileSync(url, 'utf8'), { schema: jsYaml.JSON_SCHEMA })
     }
     const {data} = await axios.get(url)

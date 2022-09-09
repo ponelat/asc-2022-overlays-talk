@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="66.094498mm"
+   height="19.811255mm"
+   viewBox="0 0 66.094498 19.811255"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="yaml-plus-overlay.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="4.8176907"
+     inkscape:cx="99.632797"
+     inkscape:cy="35.079047"
+     inkscape:window-width="1884"
+     inkscape:window-height="1026"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:lockguides="true" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-12.615625,-40.49214)">
+    <path
+       d="m 49.782738,49.142437 h 5.568635 v 0.729742 h -5.568635 z m 0,1.772232 h 5.568635 V 51.6531 h -5.568635 z"
+       id="path81289"
+       style="font-size:10.5833px;line-height:1.25;word-spacing:0px;fill:#455a64;stroke-width:0.264583" />
+    <path
+       d="m 30.08072,47.609109 v 2.419445 h 2.419446 v 0.73843 H 30.08072 v 2.419446 h -0.729743 v -2.419446 h -2.419446 v -0.73843 h 2.419446 v -2.419445 z"
+       id="path81230"
+       style="font-size:10.5833px;line-height:1.25;word-spacing:0px;fill:#455a64;stroke-width:0.264583" />
+    <rect
+       style="fill:none;stroke:#455a64;stroke-width:0.365;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect21173"
+       width="13.925169"
+       height="11.596707"
+       x="33.989548"
+       y="44.599415"
+       ry="1.0084622"
+       rx="1.0084622" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.78128px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#455a64;fill-opacity:1;stroke-width:0.264583"
+       x="35.111439"
+       y="50.986008"
+       id="text6322-6"><tspan
+         sodipodi:role="line"
+         id="tspan6320-1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:FreeMono;-inkscape-font-specification:FreeMono;fill:#455a64;fill-opacity:1;stroke-width:0.264583"
+         x="35.111439"
+         y="50.986008">Overlay</tspan></text>
+    <rect
+       style="fill:#455a64;stroke-width:0.965;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+       id="rect21175"
+       width="9.8708477"
+       height="11.596707"
+       x="15.284778"
+       y="44.599415"
+       ry="0.86404943"
+       rx="0.86404943" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.78128px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#f9f9f9;stroke-width:0.264583"
+       x="16.893789"
+       y="51.208511"
+       id="text18772"><tspan
+         sodipodi:role="line"
+         id="tspan18770"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:FreeMono;-inkscape-font-specification:FreeMono;fill:#f9f9f9;stroke-width:0.264583"
+         x="16.893789"
+         y="51.208511">YAML</tspan></text>
+    <rect
+       style="fill:none;stroke:#455a64;stroke-width:0.365;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect992-7"
+       width="18.927336"
+       height="11.596707"
+       x="56.931137"
+       y="44.5993"
+       ry="1.4705223"
+       rx="1.4705223" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.78128px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#455a64;fill-opacity:1;stroke-width:0.264583"
+       x="66.387848"
+       y="49.201382"
+       id="text18772-8"><tspan
+         sodipodi:role="line"
+         id="tspan18770-5"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:FreeMono;-inkscape-font-specification:FreeMono;text-align:center;text-anchor:middle;fill:#455a64;fill-opacity:1;stroke-width:0.264583"
+         x="66.387848"
+         y="49.201382">YAML</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:FreeMono;-inkscape-font-specification:FreeMono;text-align:center;text-anchor:middle;fill:#455a64;fill-opacity:1;stroke-width:0.264583"
+         x="66.387848"
+         y="52.789886"
+         id="tspan19371">(Modified)</tspan></text>
+    <path
+       id="rect21894"
+       style="fill:#455a64;fill-opacity:1;stroke:#455a64;stroke-width:0.365001;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 75.858461,53.374181 -18.061429,2.69286 c 0.184259,0.08279 0.388835,0.129191 0.604613,0.129191 h 15.986106 c 0.814668,0 1.47071,-0.656042 1.47071,-1.470713 z" />
+  </g>
+</svg>

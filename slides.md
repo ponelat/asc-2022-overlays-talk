@@ -4,31 +4,61 @@ _class: lead
 html: true
 paginate: true
 backgroundColor: #fff
-backgroundImage: url('https://marp.app/assets/hero-background.jpg')
+backgroundImage: linear-gradient(132deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 100.00%)
+style: |
+  marp-pre {border-radius: 10px; background: #2d2d2d; color: #cccccc; }
+  .language-yaml { color: #ccc; } 
+  .hljs-number { color: #f2777a; }
+  .hljs-string { color: #f99157; }
+  .hljs-attr { color: #6699cc; }
+  .hljs-bullet { color: #6699cc; }
+  .hljs-comment { color: #999999; }
+gradients:
+- linear-gradient(132deg, rgb(255, 127, 56) 0.00%, rgb(255, 196, 108) 100.00%)
+- linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%)
+- linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%);
+- linear-gradient(132deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 100.00%)
 ---
 
-# API Definitions are getting larger, how do Overlays help?
+# APIs are getting larger, how do Overlays help?
 
-Large API definitions terrify me and the poor browsers.
+Large APIs terrify me and they're getting bigger.
 
 Overlays help. A little.
 
 ---
 
-# About Overlays
+### Before we begin
 
-They allow you to enrich (or de-rich) your APIs.
-
-They're YAML files that take an API as input and produce a modifed API as output. 
+And in the interest of being polite...
 
 ---
 
-# I'm Josh
+# Overlays - tl;dr
 
-- Lead on Swagger Open Source at SmartBear.
-- A (software) tool-maker, who actually likes JS.
+They're YAML files that take an API (YAML) document as input and produce a modifed document as output. 
 
-TODO: Profile slide
+![width:900px](./yaml-plus-overlay.svg)
+
+---
+
+# Warm up
+
+---
+
+![bg left:28%](./josh-ponelat-profile.jpg)
+
+
+# I'm Josh Ponelat
+_(Pah-neh-lat)_
+
+- Lead on Swagger open source at SmartBear.
+- A software tool-maker, who doesn't mind JS.
+- Not a nerd (mostly)
+
+[@jponelat](https://twitter.com/jponelat)
+https://ponelat.com 
+
 
 ---
 
@@ -45,27 +75,36 @@ TODO: Profile slide
 
 ---
 
-# It's all about people
+![bg right:33%](./ryoji-iwata-dlBXwGlzfcs-unsplash.jpg)
+
+# All these people are concerning
+
+_...or the concerns of people involved in API design_
 
 ---
 
-API authoring is no longer the domain of only one persona. 
+<!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
+<!-- _color: white; -->
 
-Dedicated folks are now involved and responsible for different parts of an API.
 
-The following are the use-cases and personas that inspired Overlays.
+> API design is no longer the concern of one person. 
+> Different areas are being handed over to dedicated folks.
 
+                                      Archimedes, 250 BCE
 ---
 
 # Documentation writer
 
-Let's call her Ellen.
-![](./persona.png)
+![bg left:30%](./ellen.png)
 
-She doesn't have access to the source OpenAPI definition.
-But she needs to be able to add a human touch to the documentation. 
+**Responsible for**
+Documentation and translations.
 
-**Translations**, **Easier than writing everything by hand**.
+**Cares about**
+Written word, developer experience and accuracy.
+
+**Pains (related)**
+Access to source files, copying changes to curated files.
 
 ---
 
@@ -78,23 +117,28 @@ But she needs to be able to add a human touch to the documentation.
 - Variations of the above for i18n
 TODO: Image of documentation and/or translations
 
+
 ---
 
 # DevOps engineer
 
-Let's call him Nathan.
-![](./persona3.png)
+![bg left:30%](./nathan.png)
 
-He needs to annotate several API definitions with Gateway annotations.
-But he's uninterested in any other specifics of the APIs. 
 
-TODO: Image of cloud infrastructure
+**Responsible for**
+Deployments, gateways and infrastructure
 
-**Vendor extensions for an API**.
+**Cares about**
+API Security, URLs and server names
+
+**Pains (related)**
+Custom scripting to inject annotations
 
 ---
 
-## DevOps Needs
+# DevOps engineer - Scripting
+
+**Solving this today with custom scripting**
 
 Annotating APIs to include infrastructure details.
 
@@ -114,13 +158,17 @@ security:
 
 # Product Manager
 
-Let's call them Jim.
-![](./persona2.png)
+![bg left:30%](./jim.png)
 
-They are interested in exposing API definitions publicly.
-To show only thos parts that matter to users. 
 
-TODO: Image of zoom call
+**Responsible for**
+Customers, "The Market"
+
+**Cares about**
+Visibility  curation 
+
+**Pains (related)**
+Juggling commitments
 
 ---
 
@@ -146,7 +194,25 @@ paths:
 
 ---
 
-# Overlays
+_This page left intentionally blank_
+
+---
+
+# API Concerns
+
+
+![bg](./api-concerns.svg)
+
+---
+
+<!-- _color: white; -->
+<!-- _backgroundImage: linear-gradient(0deg, rgba(59,213,235,1) 0%, rgba(2,139,158,1) 100%); -->
+
+## Problems
+
+- I need variations of an API
+- The source inaccessable :( 
+- The API shows too much informaation
 
 ---
 # Overlay example
@@ -215,12 +281,7 @@ update: Pet
 
 # Sizes of API features
 
-
 ![](./bar-chart.png)
-
-TODO: Bar chart of savings
-TODO: Calculate for k8s,strip and petstore.
-TODO: Run it over the 4gb corpus?
 
 ---
 
@@ -338,10 +399,11 @@ paths:
 
 ## Do you need Overlays?
 
-Start with "No, I don't need Overlays.". Then ponder the following.
+Start with -> "No, I don't need Overlays.". 
+Then ponder the following.
 
 - Do you need variations of an API?
-- Is the source inaccessable? Think code annotations
+- Is the source inaccessable? Code annotations, traffic inference.
 - Is the API really large?
 - Are there independent features of the API?
 
