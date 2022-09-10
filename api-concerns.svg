@@ -23,15 +23,16 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="1.9062812"
-     inkscape:cx="998.27877"
-     inkscape:cy="612.18672"
-     inkscape:window-width="1920"
-     inkscape:window-height="1080"
+     inkscape:zoom="2.6958887"
+     inkscape:cx="240.366"
+     inkscape:cy="721.83988"
+     inkscape:window-width="1884"
+     inkscape:window-height="1026"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g174358" />
+     inkscape:current-layer="g174358"
+     inkscape:lockguides="true" />
   <title
      id="title92401">112-installing</title>
   <g
@@ -1194,18 +1195,18 @@
     <g
        id="g170669">
       <rect
-         x="769.03302"
+         x="769.03308"
          y="683.12097"
-         width="135.16939"
+         width="203.21347"
          height="45.209"
-         rx="9.0419998"
-         style="isolation:isolate;fill:#f73e59;stroke-width:0.999998"
+         rx="9.0420008"
+         style="isolation:isolate;fill:#f73e59;stroke-width:0.999999"
          id="rect92843"
          ry="9.0419998" />
       <rect
          x="769.03302"
          y="683.12097"
-         width="135.16945"
+         width="203.21341"
          height="45.209"
          rx="9.0419998"
          style="isolation:isolate;fill:none;stroke:#1e223b;stroke-width:2px;stroke-linecap:round;stroke-linejoin:round"
@@ -1221,39 +1222,39 @@
            id="tspan103530"
            x="782.94293"
            y="716.35529"
-           style="font-weight:normal;fill:#ffffff;stroke-width:0.999997">Users</tspan></text>
+           style="font-weight:normal;fill:#ffffff;stroke-width:0.999997">Audiences</tspan></text>
     </g>
     <g
        id="g170669-7"
        transform="translate(-657.00057,50.709462)">
       <rect
-         x="769.03302"
-         y="683.12097"
-         width="135.16939"
+         x="799.14832"
+         y="678.46979"
+         width="103.29286"
          height="45.209"
          rx="9.0419998"
-         style="isolation:isolate;fill:#f73e59;stroke-width:0.999998"
+         style="isolation:isolate;fill:#f7a03e;fill-opacity:1;stroke-width:0.999998"
          id="rect92843-5"
          ry="9.0419998" />
       <rect
-         x="769.03302"
-         y="683.12097"
-         width="135.16945"
+         x="799.14832"
+         y="678.46979"
+         width="103.29285"
          height="45.209"
          rx="9.0419998"
-         style="isolation:isolate;fill:none;stroke:#1e223b;stroke-width:2px;stroke-linecap:round;stroke-linejoin:round"
+         style="isolation:isolate;fill:#ff2a2a;stroke:#1e223b;stroke-width:2px;stroke-linecap:round;stroke-linejoin:round"
          id="rect92845-8"
          ry="9.0419998" />
       <text
          xml:space="preserve"
          style="font-size:34.0497px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#ffffff;stroke-width:0.999997"
-         x="782.94293"
-         y="716.35529"
+         x="813.05823"
+         y="711.7041"
          id="text103532-7"><tspan
            sodipodi:role="line"
            id="tspan103530-0"
-           x="782.94293"
-           y="716.35529"
+           x="813.05823"
+           y="711.7041"
            style="font-weight:normal;fill:#ffffff;stroke-width:0.999997">Infra</tspan></text>
     </g>
     <g
@@ -1344,16 +1345,16 @@
       <rect
          x="1072.7125"
          y="585.0365"
-         width="135.16939"
+         width="118.78609"
          height="45.209"
          rx="9.0419998"
-         style="isolation:isolate;fill:#f73e59;stroke-width:0.999998"
+         style="isolation:isolate;fill:#f73e59;stroke-width:0.999996"
          id="rect176154"
          ry="9.0419998" />
       <rect
          x="1072.7125"
          y="585.0365"
-         width="135.16945"
+         width="118.78608"
          height="45.209"
          rx="9.0419998"
          style="isolation:isolate;fill:#0270bb;fill-opacity:1;stroke:#1e223b;stroke-width:2px;stroke-linecap:round;stroke-linejoin:round"
@@ -1362,13 +1363,13 @@
       <text
          xml:space="preserve"
          style="font-size:34.0497px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#ffffff;stroke-width:0.999997"
-         x="1086.6224"
-         y="618.27081"
+         x="1088.0732"
+         y="620.48187"
          id="text176160"><tspan
            sodipodi:role="line"
            id="tspan176158"
-           x="1086.6224"
-           y="618.27081"
+           x="1088.0732"
+           y="620.48187"
            style="font-weight:normal;fill:#ffffff;stroke-width:0.999997">Code</tspan></text>
     </g>
   </g>

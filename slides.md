@@ -13,6 +13,10 @@ style: |
   .hljs-attr { color: #6699cc; }
   .hljs-bullet { color: #6699cc; }
   .hljs-comment { color: #999999; }
+  section.middle { display: flex; align-items: center; justify-content: center; }
+  section.middle > * { margin-right: 30px; }
+  section.offset-img-64 img { display: inline-block; position: relative; top: 16px; }
+
 gradients:
 - linear-gradient(132deg, rgb(255, 127, 56) 0.00%, rgb(255, 196, 108) 100.00%)
 - linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%)
@@ -20,11 +24,12 @@ gradients:
 - linear-gradient(132deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 100.00%)
 ---
 
+<!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
+<!-- _color: white; -->
+
 # APIs are getting larger, how do Overlays help?
 
-Large APIs terrify me and they're getting bigger.
-
-Overlays help. A little.
+They do help... a little.
 
 ---
 
@@ -36,7 +41,7 @@ And in the interest of being polite...
 
 # Overlays - tl;dr
 
-They're YAML files that take an API (YAML) document as input and produce a modifed document as output. 
+They're YAML files that take an YAML document as input and produce a modifed document as output. 
 
 ![width:900px](./yaml-plus-overlay.svg)
 
@@ -52,34 +57,39 @@ They're YAML files that take an API (YAML) document as input and produce a modif
 # I'm Josh Ponelat
 _(Pah-neh-lat)_
 
-- Lead on Swagger open source at SmartBear.
-- A software tool-maker, who doesn't mind JS.
-- Not a nerd (mostly)
+- Lead on Swagger (open source) at SmartBear.
+- Product manager on SwaggerHub.
+- But mostly a tool-maker.
 
 [@jponelat](https://twitter.com/jponelat)
 https://ponelat.com 
-
 
 ---
 
 # This talk
 
-- The people involved in API definitions.
-  - A look at use-cases that inspired Overlays 
-- **How Overlays work**
+- The _other_ people involved in APIs
+   - Docs, DevOps and PMs
+- **Overlays:** How they work
 - Shower thoughts
-  - The size of API features
-  - Are definitions Pets or Toys?
+  - APIs as Pets or Toys?
   - A tool or a standard?
   - Anti-patterns and pitfalls
+  
+---
+
+# Level setting.
+
+- Technically Overlays work with YAML, not APIs.
+- OpenAPI/AsyncAPI/JSON Schema are all YAML(ish) based.
+- API  = API Definition or Document. For this talk.
+- API ~ OpenAPI (because its what I know).
 
 ---
 
-![bg right:33%](./ryoji-iwata-dlBXwGlzfcs-unsplash.jpg)
+_This page intentionally left blank_
 
-# All these people are concerning
-
-_...or the concerns of people involved in API design_
+_Going to start with a quote_
 
 ---
 
@@ -88,12 +98,26 @@ _...or the concerns of people involved in API design_
 
 
 > API design is no longer the concern of one person. 
-> Different areas are being handed over to dedicated folks.
+> Different areas are handled by different folks.
 
                                       Archimedes, 250 BCE
 ---
 
+![bg right:40%](./barries.svg)
+
+# It's not just about Barry
+
+_Barry is a back-end engineer._
+
+API design is now more than the shape of the API, there are other concerns to it.
+
+_JP: For instance..._
+
+---
+
 # Documentation writer
+
+<!-- _class: offset-img-64 -->
 
 ![bg left:30%](./ellen.png)
 
@@ -110,13 +134,11 @@ Access to source files, copying changes to curated files.
 
 ## Documentation fields
 
-- **Markdown descriptions**
-- **Summaries**
-- **Examples**
+- Markdown `description`, `summaries`, `examples`
+- Variations of the above for i18n ![w:80px](./google-translate.png)
+- Anything that makes it more "Stripe" like.
 
-- Variations of the above for i18n
-TODO: Image of documentation and/or translations
-
+![](./stripe-docs.svg)
 
 ---
 
@@ -138,9 +160,7 @@ Custom scripting to inject annotations
 
 # DevOps engineer - Scripting
 
-**Solving this today with custom scripting**
-
-Annotating APIs to include infrastructure details.
+Annotating APIs to include infrastructure details, via bespoke scripting.
 
 ```yaml
 x-amazon-apigateway-cors: ...
@@ -151,7 +171,7 @@ x-kusk: ...
 
 ```yaml
 security: 
-- Gateway stuff...
+- Gateway specific...
 ```
 
 ---
@@ -159,7 +179,6 @@ security:
 # Product Manager
 
 ![bg left:30%](./jim.png)
-
 
 **Responsible for**
 Customers, "The Market"
@@ -180,9 +199,9 @@ paths:
   /foo:
     x-internal: true
   /bar: {}
-  /baz: {}
 ```
 
+_Alternative_
 ```yaml
 openapi: 3.1.0
 paths:
@@ -193,99 +212,218 @@ paths:
 ```
 
 ---
+<!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
+<!-- _color: white; -->
+<!-- _class: middle -->
+
+# Conclusion?
+
+---
+
+# Lots of concerns
+
+
+![bg bottom](./api-concerns.svg)
+
+---
 
 _This page left intentionally blank_
 
 ---
 
-# API Concerns
+<!-- _class: middle -->
 
+# Drum roll...
 
-![bg](./api-concerns.svg)
-
----
-
-<!-- _color: white; -->
-<!-- _backgroundImage: linear-gradient(0deg, rgba(59,213,235,1) 0%, rgba(2,139,158,1) 100%); -->
-
-## Problems
-
-- I need variations of an API
-- The source inaccessable :( 
-- The API shows too much informaation
+![](./drum.png)
 
 ---
-# Overlay example
 
-Putting together an Overlay document
+# Overlays.
+
+<!-- _class: middle -->
+
+![](./tada.png) 
+
+_The answer to everything_
+
+
+---
+# Overlays - An Example
 
 ```yaml
 overlays: 1.0.0
-extends: https://petstore.swagger.io/v2/swagger.json
-actions:
-- target: '$.paths."/pet/{petId}".get'
+info: 
+  description: This adds an emoji to POST /pet
+  version: 1.0.0
+extends: https://petstore3.swagger.io/api/v3/openapi.json
+actions: 
+- target: '$.paths."/pet".post'
   update:
-    description: Get those Pets!
-    summary: Get Pets
+    summary: Add a new pet to the store 🐕!
 ```
 
 ---
 
-# How Overlays work
+# How do Overlays work?
 
-- Target some things, then update or remove them.
-- Each of these is a layer. 
-- Several layers form an Overlay document.
-- Think of these layers as Photoshop layers
+- Target some parts of the document and mutate them.
+- Layer in these changes together to form an Overlay document
 
-TODO: Image of photoshop layers
+![bg right:40%](./layers.svg)
 
 ---
 
-# Target and action
+# The parts of an Overlay document
 
-TODO: Image highlighting the target and update action
-Overlays are a list. Target something, then do something to it.
+1. Some boilerplate
+2. Extend some (URL of an) API.
+3. List of actions
+	a). Each action: Target things and then mutate those things.
 
 ---
+
+# Boilerplate
+
+```yaml
+overlays: 1.0.0
+```
+
+Next -> Info
+
+---
+
+# Boilerplate - Info
+
+```yaml
+overlays: 1.0.0
+info: 
+  description: This adds an emoji to POST /pet
+  version: 1.0.0
+```
+
+Next -> Extends
+
+---
+
+# Extend some API
+
+```yaml
+overlays: 1.0.0
+info: 
+  description: This adds an emoji to POST /pet
+  version: 1.0.0
+extends: https://petstore3.swagger.io/api/v3/openapi.json
+```
+
+Next -> Actions
+
+---
+
+# List of Actions
+
+```yaml
+overlays: 1.0.0
+info: 
+  description: This adds an emoji to POST /pet
+  version: 1.0.0
+extends: https://petstore3.swagger.io/api/v3/openapi.json
+actions: 
+- # Your action...
+```
+
+Next -> Talking about Actions
+
+---
+
+# An action
+
+A **Target** and a **Mutation**
+
+```yaml
+# Target
+target: ...
+
+# Mutations
+update: ...
+remove: ...
+```
+
+_JP: Let's look at targetting things_
+
+---
+
 # Targeting with JSONPath
 
-- Gaining traction as the defacto standard for querying JSON/YAMML. 
-- Mostly because it's being standardized and because it aims to do one thing. Target nodes.
+- Gaining traction as the defacto standard for querying JSON/YAML. 
+- Mostly because it's being standardized and because it aims to do one thing, target nodes.
+
+![bg left](./bullseye.png)
 
 ---
+
+<!-- _class: offset-img-64 -->
 
 # JSONPath Examples
-Examples:
-- `$.paths.*.*.`
-- `$.paths.*.*.parameters[?(@.name === "status")]`
+
+Examples: ![w:64](./bullseye.png)
+
+- `$.paths."/pet".post'`  &mdash; One specific thing
+- `$.paths.*.*.` &mdash; Wildcards
+- `$.tags[?(@.name == "pet")]` &mdash; Filters/Expressions
+- `$..description` &mdash; All decendants
 
 ---
 
-# Changing things with update and remove
+# Mutating things 
 
 - `update` merges in a value
-- `remove` ...uh, removes it.
+- `remove` it uh... removes it.
 
-Example
 ```yaml
-target: '$.paths.*.*.tags[?(@ === "pet")]'
-update: Pet
+update: 
+  summary: Add a new pet to the store 🐕!
+  description: Something descriptive
+```
+
+```yaml
+remove: true
 ```
 
 ---
 
-# APIs in the wild
+# Putting them together into an action
+
+```yaml
+target: '$.paths."/pet".post'
+update:
+  summary: Add a new pet to the store 🐕!
+```
 
 ---
+
+# All together now!
+
+```yaml
+overlays: 1.0.0
+info: 
+  description: This adds an emoji to POST /pet
+  version: 1.0.0
+extends: https://petstore3.swagger.io/api/v3/openapi.json
+actions: 
+- target: '$.paths."/pet".post'
+  update:
+    summary: Add a new pet to the store 🐕!
+```
+
 
 # Sizes of API features
 
-![](./bar-chart.png)
+![bg right:60% contain](./bar-chart.png)
 
 ---
 
-# APIs are heavy and Overlays separate out features
+_This page left intentionally blank_
 
 ---
 
@@ -293,12 +431,13 @@ update: Pet
 
 ---
 
-# Thinking about APIs as Toys
+<!-- _footer: Bowser and Blossom -->
+# APIs as Pets vs Toys
 
-- Should your API lovingly represent a single service, entirely as possible?
-- Should your API cater to consumers, showing only what is needed?
+![bg right](./my-dogs.jpg)
 
-TODO: Image of pet vs toy
+- Pet: Lovingly represent a single service, every detail? 
+- Toy: Cater to consumers, showing only what is needed?
 
 ---
 
@@ -310,6 +449,8 @@ TODO: Image of pet vs toy
 ---
 
 # A tool or a standard?
+
+TODO: 
 
 Why make yet-another-standard (the 15th one!)?
 
@@ -331,16 +472,22 @@ A standard encourages adoption not just on the command line, but in different co
 
 # Anti-patterns and pitfalls
 
-TODO: Image of a pit
+![bg left](./dodgy-step.png)
+
+_Dodgy practices that can cause you to trip._
 
 ---
 
-## Traits and incomplete definitions
+## Incomplete definitions
 
 We can move a lot of stuff out of definitions and into Overlays.
 Such as traits, groups of operations. 
 This could leave you with an incomplete definition, that now _requires_ an Overlay.
 Instead of enriching it becomes necessary and that limits adoption. 
+
+---
+
+# Traits in Overlays
 
 ---
 
@@ -404,7 +551,6 @@ Then ponder the following.
 
 - Do you need variations of an API?
 - Is the source inaccessable? Code annotations, traffic inference.
-- Is the API really large?
 - Are there independent features of the API?
 
 ---
@@ -429,3 +575,4 @@ Then ponder the following.
 
 - TODO: Thanks to the folks who helped me hone this talk into something more coherent.
 - TODO: Links
+- Borrowed some from illustrations.co
