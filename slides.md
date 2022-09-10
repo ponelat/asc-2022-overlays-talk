@@ -29,7 +29,7 @@ gradients:
 
 # APIs are getting larger, how do Overlays help?
 
-They do help... a little.
+They help separate concerns.
 
 ---
 
@@ -41,7 +41,7 @@ And in the interest of being polite...
 
 # Overlays - tl;dr
 
-They're YAML files that take an YAML document as input and produce a modifed document as output. 
+They're YAML files that take a YAML document as input and produce a modifed document as output. 
 
 ![width:900px](./yaml-plus-overlay.svg)
 
@@ -82,14 +82,12 @@ https://ponelat.com
 
 - Technically Overlays work with YAML, not APIs.
 - OpenAPI/AsyncAPI/JSON Schema are all YAML(ish) based.
-- API  = API Definition or Document. For this talk.
-- API ~ OpenAPI (because its what I know).
+- I'll use the word API  to mean API Definition or Document, for this talk.
+- If in doubt I'm usually referring to OpenAPI, not AsyncAPI/JSON Schema. Force of habit.
 
 ---
 
 _This page intentionally left blank_
-
-_Going to start with a quote_
 
 ---
 
@@ -109,9 +107,11 @@ _Going to start with a quote_
 
 _Barry is a back-end engineer._
 
-API design is now more than the shape of the API, there are other concerns to it.
+API design is now more than the shape of the API.
 
-_JP: For instance..._
+---
+
+# The _other_ people
 
 ---
 
@@ -160,7 +160,7 @@ Custom scripting to inject annotations
 
 # DevOps engineer - Scripting
 
-Annotating APIs to include infrastructure details, via bespoke scripting.
+Annotating APIs to include infrastructure details, possibly via bespoke scripting.
 
 ```yaml
 x-amazon-apigateway-cors: ...
@@ -171,7 +171,9 @@ x-kusk: ...
 
 ```yaml
 security: 
-- Gateway specific...
+- ...Gateway specific
+servers:
+- ...Different envs
 ```
 
 ---
@@ -227,10 +229,6 @@ paths:
 
 ---
 
-_This page left intentionally blank_
-
----
-
 <!-- _class: middle -->
 
 # Drum roll...
@@ -254,7 +252,7 @@ _The answer to everything_
 ```yaml
 overlays: 1.0.0
 info: 
-  description: This adds an emoji to POST /pet
+  title: Add an emoji 
   version: 1.0.0
 extends: https://petstore3.swagger.io/api/v3/openapi.json
 actions: 
@@ -279,7 +277,7 @@ actions:
 1. Some boilerplate
 2. Extend some (URL of an) API.
 3. List of actions
-	a). Each action: Target things and then mutate those things.
+	a). Each action: Target then mutate things.
 
 ---
 
@@ -289,7 +287,7 @@ actions:
 overlays: 1.0.0
 ```
 
-Next -> Info
+Next ![w:32](./right.svg) Info
 
 ---
 
@@ -298,11 +296,11 @@ Next -> Info
 ```yaml
 overlays: 1.0.0
 info: 
-  description: This adds an emoji to POST /pet
+  title: Add an emoji 
   version: 1.0.0
 ```
 
-Next -> Extends
+Next ![w:32](./right.svg) Extends
 
 ---
 
@@ -311,12 +309,12 @@ Next -> Extends
 ```yaml
 overlays: 1.0.0
 info: 
-  description: This adds an emoji to POST /pet
+  title: Add an emoji
   version: 1.0.0
 extends: https://petstore3.swagger.io/api/v3/openapi.json
 ```
 
-Next -> Actions
+Next ![w:32](./right.svg) Actions
 
 ---
 
@@ -325,14 +323,14 @@ Next -> Actions
 ```yaml
 overlays: 1.0.0
 info: 
-  description: This adds an emoji to POST /pet
+  title: Add an emoji
   version: 1.0.0
 extends: https://petstore3.swagger.io/api/v3/openapi.json
 actions: 
 - # Your action...
 ```
 
-Next -> Talking about Actions
+Next ![w:32](./right.svg) An Action
 
 ---
 
@@ -407,7 +405,7 @@ update:
 ```yaml
 overlays: 1.0.0
 info: 
-  description: This adds an emoji to POST /pet
+  title: Add an emoji
   version: 1.0.0
 extends: https://petstore3.swagger.io/api/v3/openapi.json
 actions: 
@@ -416,41 +414,31 @@ actions:
     summary: Add a new pet to the store 🐕!
 ```
 
-
-# Sizes of API features
-
-![bg right:60% contain](./bar-chart.png)
-
 ---
 
-_This page left intentionally blank_
+# We can now Overlay
+
+![](./tada.png)
+- Patch files broadly or specifically
+- Extract concerns 
+- Handle (some) changes to the underlying APIs
 
 ---
 
 # Shower thoughts
+<!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
+<!-- _color: white; -->
+
+_...and design considerations_
+
+![bg auto right:20%](./bathtub.png)
 
 ---
 
-<!-- _footer: Bowser and Blossom -->
-# APIs as Pets vs Toys
-
-![bg right](./my-dogs.jpg)
-
-- Pet: Lovingly represent a single service, every detail? 
-- Toy: Cater to consumers, showing only what is needed?
-
----
-
-### API shape proliferation
-
-- One API could have many API (definitions), depending on consumers.
-- The more shapes there are, the more composition will matter.
-
----
+<!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
+<!-- _color: white; -->
 
 # A tool or a standard?
-
-TODO: 
 
 Why make yet-another-standard (the 15th one!)?
 
@@ -458,40 +446,48 @@ Why make yet-another-standard (the 15th one!)?
 - A standard is meant to have many tools
 - Overlays are meant to be in many places
 
-TODO: Image of diagram and the real thing.
+![bg fit left:40%](./drawing-of-spanner.svg)
+
 
 ---
 
-# Why Overlays 
+<!-- _footer: Bowser and Blossom -->
+# Pets vs Toys
 
-As APIs become larger, as API-shape proliferation occurs more energy will be spent on composition and in more places.
+![bg right](./my-dogs.jpg)
 
-A standard encourages adoption not just on the command line, but in different contexts.
+**Pet:** Lovingly represent a single service, every detail? 
+
+**Toy:** Cater to consumers, showing only what is needed? 
+
+![](./dog.png)
+
+---
+
+### API shape proliferation
+
+One API (service) could have many API (definitions), depending on consumers.
+
+> **Assumption:** The more APIs, the more that composition and Overlays will be needed.
 
 ---
 
 # Anti-patterns and pitfalls
 
-![bg left](./dodgy-step.png)
+![bg right](./dodgy-step.png)
 
 _Dodgy practices that can cause you to trip._
 
 ---
 
-## Incomplete definitions
+## Invalid definitions
 
-We can move a lot of stuff out of definitions and into Overlays.
-Such as traits, groups of operations. 
-This could leave you with an incomplete definition, that now _requires_ an Overlay.
-Instead of enriching it becomes necessary and that limits adoption. 
+We can move a lot of stuff out of APIs and into Overlays.
+Possibly leaving our APIs invalid.
 
 ---
 
-# Traits in Overlays
-
----
-
-### An incomplete OpenAPI definition
+### An invalid OpenAPI definition
 
 ```yaml
 # Requires the overlay to be valid, missing 'info'
@@ -509,22 +505,32 @@ actions:
       version: 1.0.0
 ```
 
-This is now structural, not enriching.
-TODO: Image of structure
+**Bad:** Limits the amount of tooling you can use.
+
+---
+
+# Incomplete APIs 
+
+Using Overlays to describe necessary parts of the API.
+This could leave you with an incomplete definition, that now _requires_ an Overlay.
+
+Instead of enriching, it becomes structural.
+
+Consider: **Traits for OpenAPI**
+![bg right:40%](./duct-tape-tree.jpg)
 
 ---
 
 ## Semantic whack-a-mole
 
-**JSONPath** is awesome, but it doesn't consider semantic of the underlying specifications.
+**JSONPath** is awesome, 
+but it doesn't consider the semantics of the underlying specifications.
 
-It is possible to describe things in different places, but with the same meaning.
-
-Consider parameters in OpenAPI.
+It is possible to miss targets using JSONPath. 
 
 ---
 
-### Parameters in OpenAPI
+### Whack-a-parameter in OpenAPI
 
 ```yaml
 paths:
@@ -540,13 +546,16 @@ paths:
 ```
 
 
-`$.paths.*.parameters` vs `$.paths.*.*.parameters`
+1. `$.paths.*.*.parameters`  &mdash; usual
+2. `$.paths.*.parameters` &mdash; not usually considered
 
 ---
 
 ## Do you need Overlays?
 
-Start with -> "No, I don't need Overlays.". 
+Start with, "No, I don't need Overlays."
+&mdash; It is another moving part
+
 Then ponder the following.
 
 - Do you need variations of an API?
@@ -557,8 +566,10 @@ Then ponder the following.
 
 # Alternatives 
 
-- Redocly-CLI
-- JSONette
+![bg right:50%](./jsonnet.png)
+
+- Redocly-CLI https://github.com/Redocly/redocly-cli
+- JSONette https://jsonnet.org/
 - Geneva https://github.com/smizell/geneva
 
 ---
@@ -568,11 +579,20 @@ Then ponder the following.
 - The OpenAPI SIG, bi-weekly meet.
 - We're made up of tooling vendors
 - We need your help
+- Prototype: https://github.com/ponelat/overlays-cli (npm: `overlays-cli`)
+- Specification: https://github.com/OAI/Overlay-Specification
+- Discussion: https://github.com/OAI/Overlay-Specification/discussions
 
 ---
 
 # Closing remarks
 
-- TODO: Thanks to the folks who helped me hone this talk into something more coherent.
-- TODO: Links
-- Borrowed some from illustrations.co
+Thanks to the folks who helped hone this talk.
+
+- Hezzie @Hezzieponelat
+- Fabrizio Ferri-Benedetti @remoquete
+- Adam Altman @adamaltman 
+- Frank Kilcommins @fkilcommins
+- Borrowed some img from illustrations.co
+
+

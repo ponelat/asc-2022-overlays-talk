@@ -2,7 +2,7 @@
   <command title="Watch" dir="." >
 
     <cmd>
-      nix-shell -p --run "npx --yes @marp-team/marp-cli@latest -s ."
+      nix-shell -p --run "npx --yes @marp-team/marp-cli@latest -s --allow-local-files ."
     </cmd>
 
   </command>

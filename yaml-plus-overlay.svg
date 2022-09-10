@@ -26,10 +26,10 @@
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:zoom="4.8176907"
-     inkscape:cx="99.632797"
-     inkscape:cy="35.079047"
-     inkscape:window-width="1884"
-     inkscape:window-height="1026"
+     inkscape:cx="168.13035"
+     inkscape:cy="44.62719"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -55,7 +55,7 @@
        id="path81230"
        style="font-size:10.5833px;line-height:1.25;word-spacing:0px;fill:#455a64;stroke-width:0.264583" />
     <rect
-       style="fill:none;stroke:#455a64;stroke-width:0.365;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#455a64;stroke:#455a64;stroke-width:0.365;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
        id="rect21173"
        width="13.925169"
        height="11.596707"
@@ -65,17 +65,17 @@
        rx="1.0084622" />
     <text
        xml:space="preserve"
-       style="font-size:2.78128px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#455a64;fill-opacity:1;stroke-width:0.264583"
+       style="font-size:2.78128px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
        x="35.111439"
        y="50.986008"
        id="text6322-6"><tspan
          sodipodi:role="line"
          id="tspan6320-1"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:FreeMono;-inkscape-font-specification:FreeMono;fill:#455a64;fill-opacity:1;stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:FreeMono;-inkscape-font-specification:FreeMono;fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
          x="35.111439"
          y="50.986008">Overlay</tspan></text>
     <rect
-       style="fill:#455a64;stroke-width:0.965;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+       style="fill:#000000;stroke-width:0.365;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:0;stroke:#455a64;stroke-opacity:1"
        id="rect21175"
        width="9.8708477"
        height="11.596707"
@@ -85,13 +85,13 @@
        rx="0.86404943" />
     <text
        xml:space="preserve"
-       style="font-size:2.78128px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#f9f9f9;stroke-width:0.264583"
+       style="font-size:2.78128px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#455a64;stroke-width:0.264583;fill-opacity:1"
        x="16.893789"
        y="51.208511"
        id="text18772"><tspan
          sodipodi:role="line"
          id="tspan18770"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:FreeMono;-inkscape-font-specification:FreeMono;fill:#f9f9f9;stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:FreeMono;-inkscape-font-specification:FreeMono;fill:#455a64;stroke-width:0.264583;fill-opacity:1"
          x="16.893789"
          y="51.208511">YAML</tspan></text>
     <rect

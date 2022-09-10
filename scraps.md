@@ -418,3 +418,23 @@ We have a challenge in that the composition within your OpenAPI will impact how 
 Is this the same as microservices, microfrontend and the like? 
 Of course it is. Let's establish that if you don't need Overlays, don't use them. Period. 
 Less is more, if you can get by with your API definition having all details in it, _that's a good thing!_ Be hesitant in adopting a pattern, but if you need it adopt it now.
+
+---
+
+# Why Overlays 
+
+As APIs become larger, as API-shape proliferation occurs more energy will be spent on composition and in more places.
+
+A standard encourages adoption not just on the command line, but in different contexts.
+
+---
+
+<!-- _class: middle -->
+
+TODO: ??
+# And the size of things?
+
+---
+
+TODO: ??
+![bg contain](./bar-chart.png)
