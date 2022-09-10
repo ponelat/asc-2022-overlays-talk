@@ -47,6 +47,8 @@ They're YAML files that take a YAML document as input and produce a modifed docu
 
 ---
 
+<!-- notes: Hands up if you've never heard of YAML, or how many use OAS/AAS/JS-->
+
 # Warm up
 
 ---
@@ -87,7 +89,10 @@ https://ponelat.com
 
 ---
 
+<!-- notes: Let's start with a quote -->
+
 _This page intentionally left blank_
+
 
 ---
 
