@@ -27,15 +27,20 @@ gradients:
 <!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
 <!-- _color: white; -->
 
-# APIs are getting larger, how do Overlays help?
+# APIs are getting larger
 
-They help separate concerns.
+How do Overlays help?
+
+---
+<!-- _class: middle -->
+
+# The billion dollar feature
 
 ---
 
-### Before we begin
+### Layers
 
-And in the interest of being polite...
+![](./psd-layers.jpg)
 
 ---
 
@@ -47,24 +52,19 @@ They're YAML files that take a YAML document as input and produce a modifed docu
 
 ---
 
-<!-- notes: Hands up if you've never heard of YAML, or how many use OAS/AAS/JS-->
-
-# Warm up
-
----
+# I'm Josh Ponelat
 
 ![bg left:28%](./josh-ponelat-profile.jpg)
 
-
-# I'm Josh Ponelat
 _(Pah-neh-lat)_
 
-- Lead on Swagger (open source) at SmartBear.
-- Product manager on SwaggerHub.
-- But mostly a tool-maker.
+- Swagger and SwaggerHub at SmartBear.
+- Wrote a book. 
+- Easy to google, no one else has this name.
+- Love to talk, come say hi!
 
-[@jponelat](https://twitter.com/jponelat)
-https://ponelat.com 
+
+
 
 ---
 
@@ -73,19 +73,19 @@ https://ponelat.com
 - The _other_ people involved in APIs
    - Docs, DevOps and PMs
 - **Overlays:** How they work
-- Shower thoughts
-  - APIs as Pets or Toys?
-  - A tool or a standard?
-  - Anti-patterns and pitfalls
+- APIs as Pets or Toys?
+- A tool or a standard?
+- Anti-patterns and pitfalls
   
+<!-- notes: Hands up if you've never heard of YAML, or how many use OAS/AAS/JS-->
+
 ---
 
 # Level setting.
 
-- Technically Overlays work with YAML, not APIs.
-- OpenAPI/AsyncAPI/JSON Schema are all YAML(ish) based.
-- I'll use the word API  to mean API Definition or Document, for this talk.
-- If in doubt I'm usually referring to OpenAPI, not AsyncAPI/JSON Schema. Force of habit.
+- **YAML** 
+
+- **OpenAPI**, **AsyncAPI** and **JSON Schema**
 
 ---
 
@@ -100,10 +100,16 @@ _This page intentionally left blank_
 <!-- _color: white; -->
 
 
-> API design is no longer the concern of one person. 
-> Different areas are handled by different folks.
+> API design is no longer the concern of a single person, it has outgrown that.
 
                                       Archimedes, 250 BCE
+---
+
+# What are APIs
+
+
+![bg](./api-shapes.svg)
+
 ---
 
 ![bg right:40%](./barries.svg)
@@ -116,7 +122,20 @@ API design is now more than the shape of the API.
 
 ---
 
+<!-- note: What does this mean? -->
 # The _other_ people
+
+![bg right contain](./the-other-guys.jpg)
+
+---
+
+## Documentation fields
+
+- Markdown `description`, `summary`, `examples`, etc
+- Variations of the above for i18n ![w:80px](./google-translate.png)
+- Anything that makes it more "Stripe" like.
+
+![](./stripe-docs.svg)
 
 ---
 
@@ -137,33 +156,7 @@ Access to source files, copying changes to curated files.
 
 ---
 
-## Documentation fields
-
-- Markdown `description`, `summaries`, `examples`
-- Variations of the above for i18n ![w:80px](./google-translate.png)
-- Anything that makes it more "Stripe" like.
-
-![](./stripe-docs.svg)
-
----
-
-# DevOps engineer
-
-![bg left:30%](./nathan.png)
-
-
-**Responsible for**
-Deployments, gateways and infrastructure
-
-**Cares about**
-API Security, URLs and server names
-
-**Pains (related)**
-Custom scripting to inject annotations
-
----
-
-# DevOps engineer - Scripting
+# DevOps and annotating
 
 Annotating APIs to include infrastructure details, possibly via bespoke scripting.
 
@@ -183,6 +176,40 @@ servers:
 
 ---
 
+
+# DevOps engineer
+
+![bg left:30%](./nathan.png)
+
+
+**Responsible for**
+Deployments, gateways and infrastructure
+
+**Cares about**
+API Security, URLs and server names
+
+**Pains (related)**
+Custom scripting to inject annotations
+
+---
+
+## Different audiences
+
+![bg right contain](./customer.svg)
+
+
+```yaml
+openapi: 3.1.0
+paths:
+  /foo:
+    x-internal: true
+  /bar: {}
+  /baz: {}
+```
+
+
+---
+
 # Product Manager
 
 ![bg left:30%](./jim.png)
@@ -195,28 +222,6 @@ Visibility  curation
 
 **Pains (related)**
 Juggling commitments
-
----
-
-## Public and Private endpoints
-
-```yaml
-openapi: 3.1.0
-paths:
-  /foo:
-    x-internal: true
-  /bar: {}
-```
-
-_Alternative_
-```yaml
-openapi: 3.1.0
-paths:
-  /foo:
-    x-audiences: [public]
-  /bar:
-    x-audiences: [partner-bob]
-```
 
 ---
 <!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
@@ -424,9 +429,26 @@ actions:
 # We can now Overlay
 
 ![](./tada.png)
-- Patch files broadly or specifically
-- Extract concerns 
-- Handle (some) changes to the underlying APIs
+
+- Patch APIs broadly or specifically
+- Using this to separate concerns 
+
+--- 
+
+# Examples of Overlays
+
+Specific changes vs broad changes
+
+- Maintaining a translated version of an API
+- Adding server details to an API
+- Adding alternative security 
+- Filtering out components
+
+---
+
+# The input can be different
+
+![bg h:400](./different-yaml-same-overlay.png)
 
 ---
 
@@ -437,22 +459,6 @@ actions:
 _...and design considerations_
 
 ![bg auto right:20%](./bathtub.png)
-
----
-
-<!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
-<!-- _color: white; -->
-
-# A tool or a standard?
-
-Why make yet-another-standard (the 15th one!)?
-
-- It starts with a tool
-- A standard is meant to have many tools
-- Overlays are meant to be in many places
-
-![bg fit left:40%](./drawing-of-spanner.svg)
-
 
 ---
 
@@ -469,14 +475,46 @@ Why make yet-another-standard (the 15th one!)?
 
 ---
 
-### API shape proliferation
+### API variation proliferation
 
 One API (service) could have many API (definitions), depending on consumers.
 
-> **Assumption:** The more APIs, the more that composition and Overlays will be needed.
+**Assumption:** There will be a lot more API variations in the future.
+
+![bg left](./my-dogs.jpg)
 
 ---
 
+<!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
+<!-- _color: white; -->
+
+# A tool or a standard?
+
+Why make yet-another-standard (the 15th one!)?
+
+- It starts with a tool
+- A standard is meant to have many tools
+
+**Assumption:** Overlays are first-class citizens. Should be consumed as such.
+
+![bg fit left:40%](./drawing-of-spanner.svg)
+
+---
+
+# More the merrier
+
+<!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
+<!-- _color: white; -->
+
+- There are more concerns being lumped into API documents
+- There is a need for more API variations
+
+_Overlays help shift those concerns into independent layers_
+
+![bg right:40%](./api-concerns.svg)
+
+
+---
 # Anti-patterns and pitfalls
 
 ![bg right](./dodgy-step.png)
@@ -496,7 +534,7 @@ Possibly leaving our APIs invalid.
 
 ```yaml
 # Requires the overlay to be valid, missing 'info'
-openapi: 3.0.3
+openapi: 3.1.0
 paths: {}
 ```
 
@@ -516,13 +554,12 @@ actions:
 
 # Incomplete APIs 
 
-Using Overlays to describe necessary parts of the API.
-This could leave you with an incomplete definition, that now _requires_ an Overlay.
-
-Instead of enriching, it becomes structural.
+Describing _necessary parts_ of an API with Overlays.
 
 Consider: **Traits for OpenAPI**
 ![bg right:40%](./duct-tape-tree.jpg)
+
+**Bad:** Instead of enriching, it becomes structural.
 
 ---
 
@@ -558,14 +595,13 @@ paths:
 
 ## Do you need Overlays?
 
-Start with, "No, I don't need Overlays."
-&mdash; It is another moving part
+Start with **no**.
 
 Then ponder the following.
 
-- Do you need variations of an API?
+- Do you need variations of an API? 
+- Are you concerned about the different API concerns
 - Is the source inaccessable? Code annotations, traffic inference.
-- Are there independent features of the API?
 
 ---
 
@@ -600,4 +636,9 @@ Thanks to the folks who helped hone this talk.
 - Frank Kilcommins @fkilcommins
 - Borrowed some img from illustrations.co
 
+---
+
+# Fin
+
+Go have fun with your APIs!
 

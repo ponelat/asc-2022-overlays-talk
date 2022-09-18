@@ -7,4 +7,11 @@
 
   </command>
 
+  <command title="Watch (local)" dir="." >
+
+    <cmd>
+      nix-shell -p --run "./node_modules/.bin/marp -s --allow-local-files ."
+    </cmd>
+
+  </command>
 </emacs>

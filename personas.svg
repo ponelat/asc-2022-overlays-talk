@@ -23,11 +23,11 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.30110568"
-     inkscape:cx="-142.80701"
-     inkscape:cy="714.03503"
+     inkscape:zoom="1.2044227"
+     inkscape:cx="1014.5939"
+     inkscape:cy="730.22535"
      inkscape:window-width="1920"
-     inkscape:window-height="1080"
+     inkscape:window-height="1019"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -46,7 +46,7 @@
        inkscape:export-xdpi="465.89282"
        inkscape:export-ydpi="465.89282">
       <rect
-         style="fill:#ffffff;stroke-width:0.964996"
+         style="fill:none;stroke-width:0.964996"
          id="rect1136"
          width="94.08564"
          height="113.94379"
@@ -133,9 +133,9 @@
        inkscape:export-filename="/home/josh/projects/asc-overlays-talk/ellen.png"
        inkscape:export-xdpi="465.89282"
        inkscape:export-ydpi="465.89282"
-       transform="translate(-170.95193,-5.1709474)">
+       transform="translate(-169.119,-6.742149)">
       <rect
-         style="fill:#ffffff;stroke-width:0.964996"
+         style="fill:none;stroke-width:0.964996"
          id="rect2779"
          width="94.08564"
          height="113.94379"
@@ -265,7 +265,7 @@
        inkscape:export-ydpi="465.89282"
        transform="translate(198.14303,-1.4879649)">
       <rect
-         style="fill:#ffffff;stroke-width:0.964996"
+         style="fill:none;stroke-width:0.964996"
          id="rect76588"
          width="94.08564"
          height="113.94379"
