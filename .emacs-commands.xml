@@ -14,4 +14,15 @@
     </cmd>
 
   </command>
+
+  <command title="Montage" dir="." >
+
+    <cmd>
+      rm -rf  ./slide-montage.*
+      nix-shell --run "./node_modules/.bin/marp --images --image-scale .12 -o ./slide-montage/ --allow-local-files slides.md"
+      nix-shell --run "montage -geometry 60x80+2+2 slide-montage.* output-slide-montage.png"
+
+    </cmd>
+
+  </command>
 </emacs>

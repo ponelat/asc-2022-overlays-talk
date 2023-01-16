@@ -24,6 +24,12 @@ gradients:
 - linear-gradient(132deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 100.00%)
 ---
 
+# Howdy
+
+Something fun
+
+---
+
 <!-- _backgroundImage: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); -->
 <!-- _color: white; -->
 
@@ -105,7 +111,7 @@ _This page intentionally left blank_
                                       Archimedes, 250 BCE
 ---
 
-# What are APIs
+# Shape of APIs
 
 
 ![bg](./api-shapes.svg)
@@ -161,10 +167,10 @@ Access to source files, copying changes to curated files.
 Annotating APIs to include infrastructure details, possibly via bespoke scripting.
 
 ```yaml
-x-amazon-apigateway-cors: ...
-x-ms-parameter-grouping: ...
-x-google-audiences: ...
 x-kusk: ...
+x-ms-parameter-grouping: ...
+x-amazon-apigateway-cors: ...
+x-google-audiences: ...
 ```
 
 ```yaml
@@ -356,8 +362,6 @@ target: ...
 update: ...
 remove: ...
 ```
-
-_JP: Let's look at targetting things_
 
 ---
 
@@ -640,5 +644,12 @@ Thanks to the folks who helped hone this talk.
 
 # Fin
 
+
 Go have fun with your APIs!
+
+Manning discount
+![h:300](./manning.png)
+
+![bg right](./qr-slides.svg)
+
 
